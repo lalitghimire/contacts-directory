@@ -1,10 +1,10 @@
 import express from 'express';
+import contactRouter from './routes/contacts.js';
 const app = express();
 const PORT = 4000;
 
-app.get('/', (req, res) => {
-    res.send('Server is setup');
-});
+app.use(express.json());
+app.use('/contacts', contactRouter);
 
 // listen to the server
 app.listen(PORT, () => {
