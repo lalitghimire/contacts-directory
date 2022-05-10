@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const contactSchema = mongoose.Schema({
+const entrySchema = mongoose.Schema({
     name: String,
     email: String,
     phoneNo: String,
@@ -8,5 +8,5 @@ const contactSchema = mongoose.Schema({
     selectedImage: String,
 });
 
-const Contact = mongoose.model('Contact', contactSchema);
+const Contact = mongoose.model('Contact', entrySchema);
 export default Contact;
