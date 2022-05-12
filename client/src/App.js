@@ -1,9 +1,18 @@
 import React from 'react';
+import AddContactForm from './components/AddContactForm';
+import ContactsList from './components/ContactsList';
+import Header from './components/Header';
 
 const App = () => {
     return (
-        <div className='App'>
-            <h1>Contacts directory</h1>
+        <div>
+            <div>
+                <Header />
+            </div>{' '}
+            <div>
+                <AddContactForm />
+                <ContactsList />
+            </div>
         </div>
     );
 };
