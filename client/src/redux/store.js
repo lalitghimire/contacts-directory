@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { contactReducer } from './reducers/contactReducer';
+import contactReducer from './contactSlice';
 
 const store = configureStore({
     reducer: contactReducer,
     devTools: true,
 });
-export default store;
+export { store };
