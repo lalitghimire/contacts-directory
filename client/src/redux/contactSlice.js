@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     contacts: [
         {
+            id: 1,
             name: 'Lalit',
             email: 'lalit@email',
             phoneNo: '123456',
@@ -10,6 +11,7 @@ const initialState = {
             selectedImage: 'new image',
         },
         {
+            id: 2,
             name: 'rohitt',
             email: 'lalit@email',
             phoneNo: '123456',
@@ -27,7 +29,18 @@ const contactsSlice = createSlice({
             state.contacts = [...state.contacts, action.payload];
         },
         removeContact: (state, action) => {
-            state.contacts = state.contacts.filter((c) => c.id === action.payload.id);
+            //console.log('action', action);
+            state.contacts = state.contacts.filter((c) => c.id !== action.payload);
+        },
+        updateContact: (state, action) => {
+            const {
+                payload: { id, name, email, phoneNo, address, selectedImage },
+            } = action;
+            state.contacts.map((contact) =>
+                contact.id === id
+                    ? { ...contact, name, email, phoneNo, address, selectedImage }
+                    : contact
+            );
         },
     },
 });
