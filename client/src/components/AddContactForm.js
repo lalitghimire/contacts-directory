@@ -1,32 +1,68 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../redux/contactSlice';
 
 const AddContactForm = () => {
+    const dispatch = useDispatch();
+    const formik = useFormik({
+        initialValues: {
+            id: '',
+            name: '',
+            email: '',
+            phoneNo: '',
+            address: '',
+            selectedImage: '',
+        },
+        onSubmit: (values) => {
+            dispatch(addContact(values));
+        },
+    });
+
     return (
         <div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div>
-                    {' '}
-                    name: <input />
+                    id: <input name='id' onChange={formik.handleChange} value={formik.values.id} />
                 </div>
                 <div>
-                    {' '}
-                    address: <input />
+                    name:{' '}
+                    <input name='name' onChange={formik.handleChange} value={formik.values.name} />
                 </div>
                 <div>
-                    {' '}
-                    phone: <input />
+                    email:{' '}
+                    <input
+                        name='email'
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                    />
                 </div>
                 <div>
-                    {' '}
-                    email:
-                    <input />
+                    phoneNo:{' '}
+                    <input
+                        name='phoneNo'
+                        onChange={formik.handleChange}
+                        value={formik.values.phoneNo}
+                    />
                 </div>
                 <div>
-                    {' '}
-                    image: <input />
+                    address:{' '}
+                    <input
+                        name='address'
+                        onChange={formik.handleChange}
+                        value={formik.values.address}
+                    />
+                </div>
+                <div>
+                    selectedImage:{' '}
+                    <input
+                        name='selectedImage'
+                        onChange={formik.handleChange}
+                        value={formik.values.selectedImage}
+                    />
                 </div>
 
-                <button>add </button>
+                <button type='submit'>add </button>
             </form>
         </div>
     );
