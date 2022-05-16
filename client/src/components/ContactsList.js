@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from '../redux/contactSlice';
 
@@ -13,12 +14,12 @@ const ContactsList = () => {
 
     return (
         <div>
-            <p>hello</p>
             {contacts.map((person) => (
                 <p key={person.name}>
                     {person.name}
                     {person.email} {person.address}{' '}
                     <button onClick={() => handleDeleteContact(person.id)}> delete</button>
+                    <button> edit </button>
                 </p>
             ))}
         </div>
