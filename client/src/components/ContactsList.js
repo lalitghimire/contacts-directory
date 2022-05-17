@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContact } from '../redux/contactSlice';
+import { removeContact, updateContact } from '../redux/contactSlice';
 
 const ContactsList = () => {
     const contacts = useSelector((state) => state.contactsReducer.contacts);
@@ -12,6 +12,19 @@ const ContactsList = () => {
         dispatch(removeContact(id));
     };
 
+    const handleUpdateContact = () => {
+        console.log('update button clicked');
+        dispatch(
+            updateContact({
+                id: 2,
+                name: 'Lalitghimire',
+                email: 'lalit@email',
+                phoneNo: '123456',
+                address: 'Helsinki',
+                selectedImage: 'new image',
+            })
+        );
+    };
     return (
         <div>
             {contacts.map((person) => (
@@ -19,7 +32,7 @@ const ContactsList = () => {
                     {person.name}
                     {person.email} {person.address}{' '}
                     <button onClick={() => handleDeleteContact(person.id)}> delete</button>
-                    <button> edit </button>
+                    <button onClick={() => handleUpdateContact(person.id)}> edit</button>
                 </p>
             ))}
         </div>
