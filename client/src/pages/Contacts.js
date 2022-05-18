@@ -17,13 +17,7 @@ const Contacts = () => {
 
     return (
         <div>
-            <ContactsList
-                openModal={openModal}
-                handleClose={handleModalClose}
-                handleOpen={handleModalOpen}
-                currentContactId={currentContactId}
-                setCurrentContactId={setCurrentContactId}
-            />
+            <ContactsList handleOpen={handleModalOpen} setCurrentContactId={setCurrentContactId} />
 
             <ContactForm
                 openModal={openModal}
