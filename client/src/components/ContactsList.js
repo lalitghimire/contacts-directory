@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Button,
     TableContainer,
@@ -11,12 +11,16 @@ import {
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContact } from '../redux/contactSlice';
+import { removeContact, getAllcontacts } from '../redux/contactSlice';
 
 const ContactsList = ({ handleOpen, setCurrentContactId }) => {
     const contacts = useSelector((state) => state.contactsReducer.contacts);
     const dispatch = useDispatch();
     console.log('contacts', contacts);
+
+    useEffect(() => {
+        dispatch(getAllcontacts());
+    }, [dispatch]);
 
     const handleDeleteContact = (id) => {
         dispatch(removeContact(id));
@@ -43,18 +47,18 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
                     </TableHead>
                     <TableBody>
                         {contacts.map((contact) => (
-                            <TableRow key={contact.id}>
+                            <TableRow key={contact._id}>
                                 <TableCell> {contact.name} </TableCell>
                                 <TableCell> {contact.phoneNo} </TableCell>
                                 <TableCell> {contact.address} </TableCell>
                                 <TableCell> {contact.email} </TableCell>
                                 <TableCell>
                                     {' '}
-                                    <button onClick={() => handleDeleteContact(contact.id)}>
+                                    <button onClick={() => handleDeleteContact(contact._id)}>
                                         {' '}
                                         delete
                                     </button>
-                                    <button onClick={() => handleUpdateContact(contact.id)}>
+                                    <button onClick={() => handleUpdateContact(contact._id)}>
                                         {' '}
                                         edit
                                     </button>{' '}

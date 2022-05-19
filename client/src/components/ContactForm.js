@@ -9,14 +9,13 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
 
     const contactTobeEdited = useSelector((state) =>
         currentContactId
-            ? state.contactsReducer.contacts.find((c) => c.id === currentContactId)
+            ? state.contactsReducer.contacts.find((c) => c._id === currentContactId)
             : null
     );
 
     const initialValues =
         currentContactId === 0
             ? {
-                  id: '',
                   name: '',
                   email: '',
                   phoneNo: '',
@@ -40,17 +39,6 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
             <DialogTitle id='form-dialog-title'>Contact Details</DialogTitle>
             <DialogContent>
                 <form onSubmit={formik.handleSubmit}>
-                    <TextField
-                        name='id'
-                        variant='outlined'
-                        label='id'
-                        sx={{ m: 1, width: '25ch' }}
-                        style={{ width: '100%' }}
-                        InputLabelProps={{ style: { fontSize: 23 } }}
-                        onChange={formik.handleChange}
-                        value={formik.values.id}
-                    />
-
                     <TextField
                         name='name'
                         variant='outlined'
