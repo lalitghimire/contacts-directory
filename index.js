@@ -2,11 +2,13 @@ import express from 'express';
 import contactRouter from './routes/contacts.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 //express setup
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = 4000;
 const mongo_uri = process.env.MONGO_URI;
