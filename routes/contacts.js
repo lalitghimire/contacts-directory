@@ -59,7 +59,7 @@ router.delete('/:id', async (req, res) => {
         if (!contactDeleted) {
             return res.send(`No contact with id ${req.params.id}`);
         }
-        res.send(`contact deleted`);
+        res.send({ id: req.params.id });
     } catch (error) {
         res.send(error.message);
         console.log(error);
