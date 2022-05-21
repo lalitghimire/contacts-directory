@@ -43,6 +43,7 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
                 <Table stickyHeader aria-label='simple table'>
                     <TableHead>
                         <TableRow>
+                            <TableCell>Photo</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Phone</TableCell>
                             <TableCell>Address</TableCell>
@@ -53,6 +54,14 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
                     <TableBody>
                         {contacts.map((contact) => (
                             <TableRow key={contact._id}>
+                                <TableCell>
+                                    {' '}
+                                    <img
+                                        style={{ height: 80, borderRadius: '100%' }}
+                                        src={`${contact.selectedImage}`}
+                                        alt=''
+                                    />{' '}
+                                </TableCell>
                                 <TableCell> {contact.name} </TableCell>
                                 <TableCell> {contact.phoneNo} </TableCell>
                                 <TableCell> {contact.address} </TableCell>

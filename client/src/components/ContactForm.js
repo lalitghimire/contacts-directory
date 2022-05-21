@@ -1,8 +1,9 @@
 import React from 'react';
+import FileBase from 'react-file-base64';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, updateContact } from '../redux/contactSlice';
-import { Button, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 
 const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentContactId }) => {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
                   selectedImage: '',
               }
             : contactTobeEdited;
+
     const formik = useFormik({
         initialValues,
         onSubmit: (values) => {
@@ -42,7 +44,7 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
                     <TextField
                         name='name'
                         variant='outlined'
-                        label='name'
+                        label='Name'
                         sx={{ m: 1, width: '25ch' }}
                         style={{ width: '100%' }}
                         InputLabelProps={{ style: { fontSize: 23 } }}
@@ -53,7 +55,7 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
                     <TextField
                         name='email'
                         variant='outlined'
-                        label='email'
+                        label='Email'
                         sx={{ m: 1, width: '25ch' }}
                         style={{ width: '100%' }}
                         InputLabelProps={{ style: { fontSize: 23 } }}
@@ -83,16 +85,14 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
                         value={formik.values.address}
                     />
 
-                    <TextField
-                        name='selectedImage'
-                        variant='outlined'
-                        label='Image'
-                        sx={{ m: 1, width: '25ch' }}
-                        style={{ width: '100%' }}
-                        InputLabelProps={{ style: { fontSize: 23 } }}
-                        onChange={formik.handleChange}
-                        value={formik.values.selectedImage}
-                    />
+                    <div style={{ margin: 10, padding: 2 }}>
+                        <Typography> Add an image file for contact</Typography>
+                        <FileBase
+                            type='file'
+                            multiple={false}
+                            onDone={({ base64 }) => formik.setFieldValue('selectedImage', base64)}
+                        />
+                    </div>
 
                     <Button variant='outlined' type='submit'>
                         {`${currentContactId === 0 ? 'Add' : 'Update'} Contact`}
