@@ -55,13 +55,20 @@ export const updateContact = createAsyncThunk(
 const initialState = {
     contacts: [],
     isLoading: false,
+    filteredContacts: [],
     error: '',
 };
 
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
-    reducers: {},
+    reducers: {
+        filterContacts: (state, action) => {
+            state.contacts = state.filteredContacts.filter((contact) =>
+                contact.name.toLowerCase().includes(action.payload)
+            );
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(addContact.pending, (state) => {
@@ -83,6 +90,7 @@ const contactsSlice = createSlice({
             .addCase(getAllcontacts.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.contacts = action.payload;
+                state.filteredContacts = action.payload;
                 state.error = '';
             })
             .addCase(getAllcontacts.rejected, (state, action) => {
@@ -120,6 +128,6 @@ const contactsSlice = createSlice({
     },
 });
 
-//export const {  } = contactsSlice.actions; //use when there is something in reducer
+export const { filterContacts } = contactsSlice.actions; //use when there is something in reducer
 
 export default contactsSlice.reducer;

@@ -12,6 +12,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact, getAllcontacts } from '../redux/contactSlice';
+import Filter from './Filter';
 
 const ContactsList = ({ handleOpen, setCurrentContactId }) => {
     const { contacts, isLoading, error } = useSelector((state) => state.contactsReducer);
@@ -38,7 +39,11 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
     return (
         <div>
             {error && <p>{error}</p>}
-            <Button onClick={handleOpen}> Add Contact</Button>
+            <Button style={{ fontSize: '18px' }} onClick={handleOpen}>
+                {' '}
+                Add Contact
+            </Button>
+            <Filter />
             <TableContainer sx={{ maxHeight: '800px' }} component={Paper}>
                 <Table stickyHeader aria-label='simple table'>
                     <TableHead>
