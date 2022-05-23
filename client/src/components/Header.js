@@ -5,7 +5,7 @@ const Header = () => {
         <header style={{ textAlign: 'center' }}>
             <AppBar position='static'>
                 {' '}
-                <h1>Contacts directory</h1>{' '}
+                <h1>My Contacts </h1>{' '}
             </AppBar>
         </header>
     );

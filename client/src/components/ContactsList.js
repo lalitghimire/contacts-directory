@@ -62,7 +62,7 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
                                 <TableCell>
                                     {' '}
                                     <img
-                                        style={{ height: 80, borderRadius: '100%' }}
+                                        style={{ height: 100, width: 100, borderRadius: '100%' }}
                                         src={`${contact.selectedImage}`}
                                         alt=''
                                     />{' '}

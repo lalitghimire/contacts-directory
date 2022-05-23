@@ -7,7 +7,7 @@ const Filter = () => {
     const dispatch = useDispatch();
 
     const inputStyle = {
-        width: '90%',
+        width: '99%',
         fontSize: '18px',
         marginWidth: '5px',
         padding: '5px',

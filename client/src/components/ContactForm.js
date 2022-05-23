@@ -117,7 +117,10 @@ const ContactForm = ({ openModal, handleClose, currentContactId, setCurrentConta
                     />
 
                     <div style={{ margin: 10, padding: 2 }}>
-                        <Typography> Add an image file for contact</Typography>
+                        <Typography>
+                            {' '}
+                            {`${currentContactId === 0 ? 'Add' : 'Choose new'}`} picture for contact
+                        </Typography>
                         <FileBase
                             type='file'
                             multiple={false}
