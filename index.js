@@ -10,6 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded());
+app.use(express.static('build'));
 
 const PORT = 4000;
 const mongo_uri = process.env.MONGO_URI;
