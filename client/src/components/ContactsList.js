@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import {
     Button,
     TableContainer,
@@ -15,7 +16,7 @@ import { removeContact, getAllcontacts } from '../redux/contactSlice';
 import Filter from './Filter';
 
 const ContactsList = ({ handleOpen, setCurrentContactId }) => {
-    const { contacts, isLoading, error } = useSelector((state) => state.contactsReducer);
+    const { contacts, isLoading } = useSelector((state) => state.contactsReducer);
     const dispatch = useDispatch();
     console.log('contacts', contacts);
 
@@ -33,12 +34,11 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
         handleOpen();
     };
     if (isLoading) {
-        return <p> ...loading your contacts</p>;
+        return <p> Contacts loading......</p>;
     }
 
     return (
         <div>
-            {error && <p>{error}</p>}
             <Button style={{ fontSize: '18px' }} onClick={handleOpen}>
                 {' '}
                 Add Contact
