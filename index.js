@@ -12,7 +12,7 @@ app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded());
 app.use(express.static('build'));
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const mongo_uri = process.env.MONGO_URI;
 
 //connection to mongodb atlas
