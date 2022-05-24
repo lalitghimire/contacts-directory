@@ -6,7 +6,7 @@ export const addContact = createAsyncThunk(
     'contacts/addcontacts',
     async (newContact, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:4000/contacts', newContact);
+            const response = await axios.post('/contacts', newContact);
             toast.success('A new contact has been added');
             return response.data;
         } catch (error) {
@@ -20,7 +20,7 @@ export const getAllcontacts = createAsyncThunk(
     'contacts/getcontacts',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:4000/contacts');
+            const response = await axios.get('/contacts');
             return response.data;
         } catch (error) {
             toast.error('Unable to fetch contacts');
@@ -33,7 +33,7 @@ export const removeContact = createAsyncThunk(
     'contacts/removecontacts',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.delete(`http://localhost:4000/contacts/${id}`);
+            const response = await axios.delete(`/contacts/${id}`);
             toast.warn('Contact has been deleted');
             return response.data;
         } catch (error) {
@@ -48,7 +48,7 @@ export const updateContact = createAsyncThunk(
     async (toBeUpdatedContact, { rejectWithValue }) => {
         try {
             const response = await axios.put(
-                `http://localhost:4000/contacts/${toBeUpdatedContact._id}`,
+                `/contacts/${toBeUpdatedContact._id}`,
                 toBeUpdatedContact
             );
             toast.success(`Contact has been updated`);
