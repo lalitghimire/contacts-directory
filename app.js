@@ -18,4 +18,4 @@ app.use(express.static('build'));
 //routes
 app.use('/contacts', contactRouter);
 
-export { app };
+export default app;
