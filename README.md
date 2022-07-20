@@ -44,3 +44,21 @@ In another terminal goto the client folder and,
 npm start (to start the client at port 3000)
 
 ```
+
+## Testing
+
+### Backend testing setup
+
+Add the following to the .env file in root directory for new test database setup
+
+```
+
+TEST_MONGO_URI=(test database connection string )
+
+
+```
+
+### Run test
+
+To run the test, run the command, on root of the project,  
+`npm test`
