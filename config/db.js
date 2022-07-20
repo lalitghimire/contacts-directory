@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
-const mongo_uri = process.env.MONGO_URI;
+const mongo_uri =
+    process.env.NODE_ENV === 'test' ? process.env.TEST_MONGO_URI : process.env.MONGO_URI;
 
 //connection to mongodb atlas
 const dbConnection = async () => {
@@ -12,7 +13,7 @@ const dbConnection = async () => {
         });
         console.log(`Succesful connection to the database ->  ${connection.connection.host}`);
     } catch (error) {
-        console.log('Dataabse connection failed', error.message);
+        console.log('Database connection failed', error.message);
     }
 };
 
