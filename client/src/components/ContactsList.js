@@ -39,7 +39,7 @@ const ContactsList = ({ handleOpen, setCurrentContactId }) => {
 
     return (
         <div>
-            <Button style={{ fontSize: '18px' }} onClick={handleOpen}>
+            <Button variant='outlined' style={{ fontSize: '18px' }} onClick={handleOpen}>
                 {' '}
                 Add Contact
             </Button>
