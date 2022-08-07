@@ -23,7 +23,7 @@ const Filter = () => {
             <input
                 type='text'
                 name=''
-                placeholder='Search user by name'
+                placeholder='Search contacts by name'
                 style={inputStyle}
                 ref={inputRef}
                 onChange={handleFilters}
