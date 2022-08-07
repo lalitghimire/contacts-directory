@@ -1,0 +1,26 @@
+name: Deployment pipeline
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deployment_pipeline:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+            - name: npm install
+              run: npm install
+
+            - name: build the frontend
+              run: npm run build:ui
+            - name: deploy to heroku
+              uses: akhileshns/heroku-deploy@v3.12.12
+              with:
+                  heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                  heroku_app_name: 'mern-cicd'
+                  heroku_email: 'lalitghimire@gmail.com'
