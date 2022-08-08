@@ -18,4 +18,8 @@ app.use(express.static('build'));
 //routes
 app.use('/contacts', contactRouter);
 
+//health check route for github actions pipeline
+app.get('/health', (req, res) => {
+    res.send('ok');
+});
 export default app;
