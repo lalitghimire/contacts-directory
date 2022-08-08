@@ -32,4 +32,4 @@ jobs:
                   heroku_email: 'lalitghimire@gmail.com'
                   healthcheck: 'https://contactsmern.herokuapp.com/health'
                   checkstring: 'ok'
-          rollbackonhealthcheckfailed: true
+                  rollbackonhealthcheckfailed: true
