@@ -20,6 +20,8 @@ jobs:
               run: npm run build:ui
 
             - name: backend integration test
+              env:
+                  TEST_MONGO_URI: ${{ secrets.TEST_MONGO_URI }}
               run: npm run test
 
             - name: deploy to heroku
