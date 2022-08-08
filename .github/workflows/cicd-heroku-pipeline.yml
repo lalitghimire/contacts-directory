@@ -30,6 +30,3 @@ jobs:
                   heroku_api_key: ${{secrets.HEROKU_API_KEY}}
                   heroku_app_name: 'contactsmern'
                   heroku_email: 'lalitghimire@gmail.com'
-                  healthcheck: 'https://contactsmern.herokuapp.com/health'
-                  checkstring: 'ok'
-                  rollbackonhealthcheckfailed: true
