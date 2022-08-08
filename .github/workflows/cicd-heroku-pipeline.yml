@@ -18,6 +18,10 @@ jobs:
 
             - name: build the frontend
               run: npm run build:ui
+
+            - test: backend integration test
+              run: npm run test
+
             - name: deploy to heroku
               uses: akhileshns/heroku-deploy@v3.12.12
               with:
